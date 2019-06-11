@@ -1,0 +1,316 @@
+/*
+----------------------------------------Right bar------------------------------------------------
+*/
+.region.right.bar {
+    margin: 3em 2em 0 0;
+    float: right;
+    width: 350px;
+
+}
+
+/*
+--------------Weather-----------
+ */
+
+.region.top.right {
+}
+
+.location {
+    display: flex;
+    align-items: start;
+/ / height: 30 px;
+}
+
+#location_icon {
+    width: 1.5em;
+
+}
+
+p#city {
+    bottom: 50px;
+    margin: 0;
+    font-size: 1em;
+}
+
+.weather_today {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "weather_icon degree";
+    grid-gap: 15px;
+
+}
+
+.weather_symbol {
+    grid-area: weather_icon;
+}
+
+#weather_icon {
+    width: 10em;
+}
+
+p#weather_desc {
+    font-size: 1em;
+    color: var(--grey);
+    position: relative;
+    bottom: 1.5em;
+    left: 2em;
+    margin: 0;
+}
+
+#degree {
+    grid-area: degree;
+    font-size: 6em;
+    text-align: center;
+    margin: 0;
+    padding: 30px 0 0 0;
+}
+
+/*
+--------------forecast-----------
+*/
+
+.region.center.right {
+
+}
+
+.weather_forecast {
+}
+
+#weatherforecast_title {
+    text-align: right;
+    padding: 0;
+}
+
+.weather_forecast_list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "forecast_date forecast_icon rain topDegree lowDegree humidity";
+
+    font-size: 1.5em;
+    line-height: 35px;
+    grid-column-gap: 20px;
+
+/ / padding: 0 px;
+}
+
+.forecast_list {
+    list-style-type: none;
+    margin-top: -10px;
+
+}
+
+ul.forecast_date {
+    grid-area: forecast_date;
+    padding: 0;
+    float: left;
+}
+
+ul.forecast_icon {
+    grid-area: forecast_icon;
+    padding-left: 0px;
+    line-height: 25px;
+}
+
+ul.humidity {
+    grid-area: humidity;
+    padding-left: 0px;
+}
+
+ul.topDegree {
+    grid-area: topDegree;
+    padding-left: 0px;
+}
+
+ul.lowDegree {
+    grid-area: lowDegree;
+    padding-left: 0px;
+}
+
+ul.rain {
+    grid-area: rain;
+    padding-left: 0px;
+}
+
+/*
+-----------HVV---------
+*/
+
+.hvv {
+}
+
+#hvv_title {
+    text-align: right;
+}
+
+ul.hvv.list {
+    display: grid;
+    grid-template-columns: 15% auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "hvv_TotalTime hvv_Lines hvv_Time" ". hvv_Lines .";
+
+    padding: 0px;
+    list-style-type: none;
+    font-size: 12px;
+    border-bottom: 1px dotted var(--grey);
+}
+
+li.hvv.TotalTime {
+    grid-area: hvv_TotalTime;
+}
+
+.hvv.Lines {
+    grid-area: hvv_Lines;
+    white-space: nowrap;
+
+    font-weight: bold;
+    overflow: hidden;
+}
+
+li.hvv.Line {
+    float: left;
+    position: relative;
+    margin-right: -50px;
+    margin-left: 5px;
+
+
+}
+
+li.hvv.icon {
+    float: left;
+
+}
+
+li.hvv.arrow {
+    float: left;
+
+}
+
+li.hvv.time {
+    /*border: 1px solid white;*/
+    /*white-space: nowrap;*/
+    grid-area: hvv_Time;
+    white-space: nowrap;
+    justify-self: right;
+}
+
+/*
+----------traffic-----------
+*/
+.traffic {
+}
+
+#traffic_title {
+    text-align: right;
+}
+
+.TrafficDiv {
+    margin-top: -0.8em;
+}
+
+ul.traffic.list {
+    display: grid;
+    grid-template-columns: 10% auto 1fr;
+/ / grid-template-rows: 80 % 20 %;
+    grid-template-areas: "TrafficIcon Tgoal Ttime" "TrafficIcon Taddress Ttime";
+    list-style-type: none;
+    border-bottom: 1px dotted var(--grey);
+    padding: 0;
+    margin-top: -0.5em;
+
+}
+
+li.traffic.icon {
+    grid-area: TrafficIcon;
+}
+
+li.goal {
+    grid-area: Tgoal;
+    list-style-image: none;
+    font-weight: bold;
+}
+
+li.traffic.time {
+    grid-area: Ttime;
+    color: lightgreen;
+    justify-self: right;
+}
+
+li.traffic.address {
+    grid-area: Taddress;
+    font-size: 0.5em;
+    color: var(--grey);
+}
+
+/*
+----------fuel price-----------
+*/
+
+.fuel_price {
+    margin: 3.1em 0 0 0;
+}
+
+#fuel_title {
+    text-align: right;
+/ / margin: 0;
+}
+
+.fuel_header {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: "fuel-icon diesel benzin";
+    list-style-type: none;
+    font-weight: bold;
+
+    font-size: 0.5em;
+    margin-top: -20px;
+}
+
+#fuel-icon {
+    grid-area: fuel-icon;
+    width: 20px;
+}
+
+#diesel-title {
+    grid-area: diesel;
+    padding-left: 12em;
+}
+
+#benzin-title {
+    grid-area: benzin;
+    padding-left: 8em;
+}
+
+ul.fuel.list {
+    display: grid;
+    grid-template-columns: 40% auto 5% auto 5%;
+    grid-template-rows: 80% 20%;
+    grid-template-areas: "firm dPrice bPrice" "fpLocation dPrice bPrice";
+
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    border-bottom: 1px dotted var(--grey);
+}
+
+.f_firm {
+    grid-area: firm;
+}
+
+.f_diesel-price {
+    grid-area: dPrice;
+    white-space: nowrap;
+}
+
+.f_benzin-price {
+    grid-area: bPrice;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+.f_location {
+    grid-area: fpLocation;
+    white-space: nowrap;
+    font-size: 0.5em;
+    color: var(--grey);
+    margin-bottom: 1.5px;
+}

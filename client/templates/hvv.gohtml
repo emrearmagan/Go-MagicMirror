@@ -1,0 +1,21 @@
+{{define "hvv"}}
+<div class="hvv">
+    <p id="hvv_title">HVV</p>
+    <hr>
+{{range .}}
+    <ul class="hvv list">
+        <li class="hvv TotalTime">{{.TotalTime}}</li>
+        <div class="hvv Lines">
+        {{range .Line}}
+            <li class="hvv Line">{{.Line}}</li>
+            <li class="hvv icon"><img src="/client/img/hvv/{{.Typ}}.png" style="width:35px;height:20px"></li>
+            <li class="hvv arrow"><img src="/client/img/hvv/arrow.png" style="width:25px;height:20px"></li>
+        {{end}}
+        </div>
+    {{/*<li class="hvv destination">{{.Destination}}</li>*/}}
+        <li class="hvv time">{{.Time}}</li>
+    {{/*<li class="hvv location">{{.Location}}</li>*/}}
+    </ul>
+{{end}}
+</div>
+{{end}}

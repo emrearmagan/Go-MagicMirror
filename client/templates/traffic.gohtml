@@ -1,0 +1,19 @@
+{{define "traffic"}}
+<div class="traffic">
+    <p id="traffic_title">Vekehr</p>
+    <hr>
+
+    <div class="TrafficDiv">
+    {{range .}}
+    <ul class="traffic list">
+        <li class="traffic icon"><img src="/client/img/traffic_icon/{{.Status}}.png" style="width:25px;height:20px"></li>
+        <li class="traffic goal">{{.Goal}}</li>
+        <li class="traffic time">{{.Time}}</li>
+        <li class="traffic address">{{.Address}}</li>
+    </ul>
+    {{end}}
+    </div>
+</div>
+
+
+{{end}}

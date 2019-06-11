@@ -1,0 +1,158 @@
+:root {
+    --grey: #686868;
+    --light-blue: #7AD7FF
+}
+
+html {
+    background: #000;
+}
+
+body {
+    background: #000;
+    color: #FFFFFF;
+    font-family: Helvetica-Light, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
+/* draws a line */
+hr {
+    top: -1em;
+    border: solid var(--light-blue) 0.05em;
+    position: relative;
+    margin-top: -10px;
+}
+
+p {
+    font-size: 1.5em;
+    color: var(--light-blue);
+}
+
+#container {
+    position: relative;
+    overflow: auto
+}
+
+
+/*
+---------------------------Loading Screen----------------------------------------
+*/
+
+.loading {
+    width: 50%;
+    height: 50%;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+
+    height: 3em;
+}
+
+.obj {
+    width: 6px;
+    height: 40px;
+    background: white;
+    margin: 0 3px;
+    border-radius: 10px;
+    animation: loading 0.8s infinite;
+}
+
+.obj:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.obj:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.obj:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.obj:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.obj:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.obj:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+.obj:nth-child(8) {
+    animation-delay: 0.7s;
+}
+
+
+@keyframes loading {
+    0% {
+        height: 0;
+    }
+    50% {
+        height: 40px;
+    }
+    100% {
+        height: 0;
+    }
+}
+
+
+/*
+---------------------------Welcome Screen----------------------------------------
+*/
+.region.middle.bar {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.welcomeScreen {
+    text-align: center;
+}
+
+p#welcome, #user {
+    color: white;
+    font-size: 120px;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+-----------------------------------News----------------------------------------
+*/
+
+.news {
+    text-align: center;
+}
+
+p#lastChangeNews {
+    font-size: 19px;
+    color: var(--grey);
+    margin: 0;
+    padding: 0;
+}
+
+p#News {
+    color: white;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+
+ */
+
+.errorHandler {
+    /*width: 50%;*/
+    /*-webkit-box-sizing: border-box; !* Safari/Chrome, other WebKit *!*/
+    /*-moz-box-sizing: border-box; !* Firefox, other Gecko *!*/
+    /*box-sizing: border-box; !* Opera/IE 8+ *!*/
+    /*margin: 0 auto;*/
+    text-align: center;
+
+    font-weight: bold;
+    font-size: 1.4em;
+    color: red;
+}

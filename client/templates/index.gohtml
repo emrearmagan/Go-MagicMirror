@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    {{/*    <meta http-equiv="refresh" content="5">*/}}
+    <title>MagicMirror</title>
+
+    <link rel="stylesheet" type="text/css" href="client/css/main.css">
+    <link rel="stylesheet" type="text/css" href="client/css/leftbar.css">
+    <link rel="stylesheet" type="text/css" href="client/css/rightbar.css">
+
+
+</head>
+{{/*<body onload=FuelPrice()>*/}}
+<body>
+<div id="container">
+    {{template "header"}}
+    <div class="region left bar">
+        <div class="region top left">
+            {{template "date-time"}}
+        </div>
+
+        <div class="region center left">
+            {{template "calender" .Calender}}
+            {{template "notifications"}}
+        </div>
+
+        <div class="region bottom left">
+        </div>
+    </div>
+
+
+    <div class="region right bar">
+        <div class="region top right">
+            {{template "weather"}}
+            {{template "forecast" .Forecast}}
+        </div>
+        <div class="region center right">
+            {{template "hvv" .HVV}}
+            {{template "traffic" .Traffic}}
+            {{template "fuel-price" .FuelPrice}}
+        </div>
+    </div>
+
+    {{/*    <div class="region middle bar">*/}}
+    {{/*        <div class="welcomeScreen">*/}}
+    {{/*            <p id="welcome">Willkommen NAME</p>*/}}
+    {{/*        </div>*/}}
+
+    {{/*        <div class="news">*/}}
+    {{/*            <p id="lastChangeNews">vor 30 Minuten:</p>*/}}
+    {{/*            <p id="News">12 Tote in der Bahn durch Bombenanschlag</p>*/}}
+    {{/*        </div>*/}}
+    {{/*    </div>*/}}
+
+    {{template "footer"}}
+    <script src="client/js/time.js"></script>
+    <script src="client/js/notification.js"></script>
+    <script src="client/js/calender.js"></script>
+    <script src="client/js/tankerkoenig.js"></script>
+    <script src="client/js/errorHandler.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        // $(document).ready(Calender);
+        // $(document).ready(notifier);
+        // $(document).ready(FuelPrice)
+    </script>
+
+</div>
+</body>
+</html>

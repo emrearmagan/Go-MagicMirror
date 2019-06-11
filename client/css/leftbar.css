@@ -1,0 +1,132 @@
+/*
+------------------------------------Left bar------------------------------------------------------------------------------------------
+ */
+.region.left.bar {
+    margin: 3em 0 0 2em;
+    float: left;
+    width: 350px;
+}
+
+/*
+--------------Date-----------
+ */
+.region.top.left {
+    overflow: auto;
+}
+
+#date {
+    font-size: 2em;
+    color: var(--grey)
+}
+
+#hours-minutes {
+    font-size: 5em;
+    float: left;
+}
+
+#seconds {
+    font-size: 1.625em;
+    top: 2.5em;
+}
+
+/*
+--------------Calender-----------
+*/
+.region.center.left {
+    margin: 3.1em 0 0 0;
+}
+
+.calender {
+}
+
+ul.event {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 80% 20%;
+    grid-template-areas: "Cicon Cevent" "Cicon Cdate";
+    font-size: 1.2em;
+    list-style-type: none;
+
+    border-bottom: 1px dotted grey;
+    padding: 0;
+    margin-top: -10px;
+    overflow: hidden;
+
+}
+
+img.c.icon {
+    grid-area: Cicon;
+    width: 20px;
+}
+
+li.c.event {
+    grid-area: Cevent;
+    white-space: nowrap;
+
+    width: 250px;
+}
+
+li.c.date {
+    font-size: 0.3em;
+    margin-top: -0.3em;
+    grid-area: Cdate;
+    color: var(--grey);
+}
+
+/*!*Blur the last 4 Childs*!*/
+.calender ul:nth-last-child(4) {
+    text-shadow: 0 0 1.5px white;
+    color: transparent;
+}
+
+.calender ul:nth-last-child(3) {
+    text-shadow: 0 0 2px white;
+    color: transparent;
+}
+
+.calender ul:nth-last-child(2) {
+    text-shadow: 0 0 2px white;
+    color: transparent;
+}
+
+.calender ul:last-child {
+    text-shadow: 0 0 3px white;
+    color: transparent;
+}
+
+.no.events {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+    color: var(--grey);
+    font-size: 1.2em;
+}
+
+
+/*
+--------------Notifications-----------
+ */
+
+.notifications {
+    margin: 50px 0 0 0;
+    font-size: 1em;
+}
+
+.notifications-list {
+    list-style-image: none;
+    padding: 0px;
+    margin: -1.25em 0 0 1.25em;
+
+    line-height: 1.25em;
+}
+
+.no-notifications {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding-top: 2em;
+    color: var(--grey);
+}
+
