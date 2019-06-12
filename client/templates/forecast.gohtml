@@ -1,50 +1,42 @@
 {{define "forecast"}}
-<div class="weather_forecast">
-<p id="weatherforecast_title">Wettervorhersage</p>
-    <hr>
-    {{/*<div class="forecast_header">*/}}
-        {{/*<img id="weather_rain" src="/img/weather_icon/header/rain.png" style="width:30px;height: 25px">*/}}
-        {{/*<img id="weather_tempHigh" src="/img/weather_icon/header/tempHigh.png" style="width:30px;height: 25px">*/}}
-        {{/*<img id="weather_tempLow" src="/img/weather_icon/header/tempLow.png" style="width:30px;height: 25px">*/}}
-        {{/*<img id="weather_humidity" src="/img/weather_icon/header/humdity.png" style="width:30px;height: 25px">*/}}
-    {{/*</div>*/}}
+    <div class="weather_forecast">
+        <p id="weatherforecast_title">Wettervorhersage</p>
+        <hr>
+        <div class="loading">
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+        </div>
 
-    <div class="weather_forecast_list">
-        <ul class="forecast_date forecast_list">
-        {{range .}}
-            <li>{{.Date}}</li>
-        {{end}}
-        </ul>
+        <div class="weather_forecast_list">
+            <ul class="forecast_date forecast_list">
+                <li></li>
+            </ul>
 
-        <ul class="forecast_icon forecast_list">
-        {{range .}}
-            <li><img id="weather_icon" src="/client/img/weather_icon/{{.Icon}}" style="width:30px;height: 30px"></li>
-        {{end}}
-        </ul>
+            <ul class="forecast_icon forecast_list">
+                <img class="forecast_icon_img">
+            </ul>
 
-        <ul class="rain forecast_list">
-        {{range .}}
-            <li>{{.Rain}}</li>
-        {{end}}
-        </ul>
+            <ul class="rain forecast_list">
+                <li></li>
+            </ul>
 
-        <ul class="topDegree forecast_list">
-        {{range .}}
-            <li>{{.TopDegree}}</li>
-        {{end}}
-        </ul>
+            <ul class="topDegree forecast_list">
+                <li></li>
+            </ul>
 
-        <ul class="lowDegree forecast_list">
-        {{range .}}
-            <li>{{.LowDegree}}</li>
-        {{end}}
-        </ul>
+            <ul class="lowDegree forecast_list">
+                <li></li>
+            </ul>
 
-        <ul class="humidity forecast_list">
-        {{range .}}
-            <li>{{.Humidity}}</li>
-        {{end}}
-        </ul>
+            <ul class="humidity forecast_list">
+                <li></li>
+            </ul>
+        </div>
     </div>
-</div>
 {{end}}

@@ -51,7 +51,7 @@ function Calender() {
 
                 let textEvent = document.createTextNode(obj.items[i].summary);
                 let textDate = document.createTextNode(obj.items[i].start.date);
-                img.src = "/img/icons/calender2_icon.png";
+                img.src = "/client/img/icons/calender_icon.png";
 
                 event.appendChild(textEvent);
                 date.appendChild(textDate);

@@ -6,7 +6,7 @@ import (
 	"net/url"
 )
 
-var openWeatherApi = &ApiConfig{
+var openWeatherApi = &apiConfig{
 	host: "http://api.openweathermap.org",
 }
 
@@ -68,7 +68,7 @@ func checkWeatherParams(r *OpenWeatherRequest) error {
 		return errors.New("latiude empty")
 	}
 	if len(r.ApiKey) == 0 {
-		return errors.New("no ApiKey selected")
+		return errors.New("no apiKey selected")
 	}
 
 	return nil
@@ -99,12 +99,12 @@ type OpenWeatherRequest struct {
 	// Required.
 	Lat Coords
 	// Units Specifies the unit system to use when expressing distance as text.
-	// Valid values are `UnitsMetric` and `UnitsImperial`.
-	// Optional.
+	// Valid values are `Metric` for Celsius and `Imperial` for Fahrenheit.
+	// Optional. (default is Kelvin)
 	Units Units
-	// ApiKey for OpenWeather API.
+	// apiKey for OpenWeather API.
 	// Required
-	ApiKey ApiKey
+	ApiKey apiKey
 }
 
 //----------------------------------------------Response------------------------------------------
@@ -114,9 +114,9 @@ type ForecastResponse struct {
 	List []struct {
 		Time int `json:"dt"` //time of date forecasted, unix, UTC
 		Main struct {
-			Temp     float64 `json:"temp"`
-			TempMin  float64 `json:"temp_min"`
-			TempMax  float64 `json:"temp_max"`
+			Temp     float32 `json:"temp"`
+			TempMin  float32 `json:"temp_min"`
+			TempMax  float32 `json:"temp_max"`
 			Humidity int     `json:"humidity"` // in %
 		} `json:"main"`
 		Weather []struct {
@@ -132,8 +132,8 @@ type ForecastResponse struct {
 }
 
 type WeatherResponse struct {
-	Name    string `json:"name"`
-	Time    int    `json:"dt"` //time of date, unix, UTC
+	Name    string    `json:"name"`
+	Time    int `json:"dt"` //time of date, unix, UTC
 	Weather []struct {
 		ID          int    `json:"id"`
 		Main        string `json:"main"`
@@ -141,9 +141,9 @@ type WeatherResponse struct {
 		Icon        string `json:"icon"`
 	} `json:"weather"`
 	Main struct {
-		Temp     float64 `json:"temp"`
-		TempMin  float64 `json:"temp_min"`
-		TempMax  float64 `json:"temp_max"`
+		Temp     float32 `json:"temp,int"`
+		TempMin  float32 `json:"temp_min"`
+		TempMax  float32 `json:"temp_max"`
 		Humidity int     `json:"humidity"` //in %
 	} `json:"main"`
 	Clouds struct {

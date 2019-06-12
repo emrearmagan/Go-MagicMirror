@@ -5,9 +5,9 @@
     {{/*    <meta http-equiv="refresh" content="5">*/}}
     <title>MagicMirror</title>
 
-    <link rel="stylesheet" type="text/css" href="client/css/main.css">
-    <link rel="stylesheet" type="text/css" href="client/css/leftbar.css">
-    <link rel="stylesheet" type="text/css" href="client/css/rightbar.css">
+    <link rel="stylesheet" type="text/css" href="/client/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/client/css/leftbar.css">
+    <link rel="stylesheet" type="text/css" href="/client/css/rightbar.css">
 
 
 </head>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="region center left">
-            {{template "calender" .Calender}}
+            {{template "calender"}}
             {{template "notifications"}}
         </div>
 
@@ -33,12 +33,12 @@
     <div class="region right bar">
         <div class="region top right">
             {{template "weather"}}
-            {{template "forecast" .Forecast}}
+            {{template "forecast"}}
         </div>
         <div class="region center right">
-            {{template "hvv" .HVV}}
+            {{template "hvv"}}
             {{template "traffic" .Traffic}}
-            {{template "fuel-price" .FuelPrice}}
+            {{template "fuel-price"}}
         </div>
     </div>
 
@@ -54,17 +54,25 @@
     {{/*    </div>*/}}
 
     {{template "footer"}}
-    <script src="client/js/time.js"></script>
-    <script src="client/js/notification.js"></script>
-    <script src="client/js/calender.js"></script>
-    <script src="client/js/tankerkoenig.js"></script>
-    <script src="client/js/errorHandler.js"></script>
+
+    {{/*    Javascript*/}}
+    <script src="/client/js/time.js"></script>
+    <script src="/client/js/notification.js"></script>
+    <script src="/client/js/calender.js"></script>
+    <script src="/client/js/tankerkoenig.js"></script>
+    <script src="/client/js/hvv.js"></script>
+    <script src="/client/js/weather.js"></script>
+    <script src="/client/js/forecast.js"></script>
+    <script src="/client/js/errorHandler.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript">
-        // $(document).ready(Calender);
+        $(document).ready(Calender);
+        $(document).ready(FuelPrice);
+        $(document).ready(HVV);
+        $(document).ready(CurrentWeather);
+        $(document).ready(Forecast);
         // $(document).ready(notifier);
-        // $(document).ready(FuelPrice)
     </script>
 
 </div>

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-var distanceMatrixAPI = &ApiConfig{
+var distanceMatrixAPI = &apiConfig{
 	"https://maps.googleapis.com",
 	"/maps/api/distancematrix/json",
 }
@@ -21,7 +21,7 @@ func (c *Client) DistanceMatrix(r *DistanceMatrixRequest) (*DistanceMatrixRespon
 		return nil, errors.New("destinations empty")
 	}
 	if len(r.ApiKey) == 0 {
-		return nil, errors.New("no ApiKey selected")
+		return nil, errors.New("no apiKey selected")
 	}
 
 	var response struct {
@@ -101,9 +101,9 @@ type DistanceMatrixRequest struct {
 	// Valid values are `AvoidTolls`, 'AvoidHighways`, 'AvoidFerries` and `AvoidIndoor`
 	//Optional
 	Avoid string
-	// ApiKey from google.developers.
+	// apiKey from google.developers.
 	// Required
-	ApiKey ApiKey
+	ApiKey apiKey
 }
 
 /*Example link

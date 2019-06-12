@@ -21,10 +21,7 @@ func TestOpenWeather(t *testing.T) {
 		ApiKey: apiKey_testOpenweather,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClientWithTestUrl(URL_testOpenWeather)
 
 	res, err := c.OpenWeather(r)
 	if err != nil {
@@ -41,10 +38,7 @@ func TestOpenForecast(t *testing.T) {
 		ApiKey: apiKey_testOpenweather,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClientWithTestUrl(URL_testOpenWeather)
 
 	res, err := c.OpenForecast(r)
 	if err != nil {
@@ -62,12 +56,9 @@ func TestOpenweatherMissingLon(t *testing.T) {
 		ApiKey: apiKey_testOpenweather,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClientWithTestUrl(URL_testOpenWeather)
 
-	if _, err = c.OpenWeather(r); err == nil {
+	if _, err := c.OpenWeather(r); err == nil {
 		t.Errorf("Missing Lon should've return error, %s", err)
 	}
 }
@@ -79,12 +70,10 @@ func TestOpenWeatherMissingLat(t *testing.T) {
 		ApiKey: apiKey_testOpenweather,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClientWithTestUrl(URL_testOpenWeather)
 
-	if _, err = c.OpenWeather(r); err == nil {
+
+	if _, err := c.OpenWeather(r); err == nil {
 		t.Errorf("Missing Lat should've return error, %s", err)
 	}
 }
@@ -96,12 +85,10 @@ func TestOpenForecastMissingLon(t *testing.T) {
 		ApiKey: apiKey_testOpenweather,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c:= api.NewClientWithTestUrl(URL_testOpenWeather)
 
-	if _, err = c.OpenForecast(r); err == nil {
+
+	if _, err := c.OpenForecast(r); err == nil {
 		t.Errorf("Missing Lon should've return error, %s", err)
 	}
 }
@@ -113,12 +100,9 @@ func TestOpenForecastMissingLat(t *testing.T) {
 		ApiKey: apiKey_testOpenweather,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClientWithTestUrl(URL_testOpenWeather)
 
-	if _, err = c.OpenForecast(r); err == nil {
+	if _, err := c.OpenForecast(r); err == nil {
 		t.Errorf("Missing Lat should've return error, %s", err)
 	}
 }
@@ -130,12 +114,9 @@ func TestOpenWeatherMissingUnit(t *testing.T) {
 		ApiKey: apiKey_testOpenweather,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClientWithTestUrl(URL_testOpenWeather)
 
-	if _, err = c.OpenWeather(r); err != nil {
+	if _, err := c.OpenWeather(r); err != nil {
 		t.Errorf("Missing unit should not return error, %s", err)
 	}
 }
@@ -147,13 +128,10 @@ func TestOpenWeatherMissingApiKey(t *testing.T) {
 		Units: api.UnitsMetric,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClientWithTestUrl(URL_testOpenWeather)
 
-	if _, err = c.OpenWeather(r); err == nil {
-		t.Errorf("Missing ApiKey should've return error, %s", err)
+	if _, err := c.OpenWeather(r); err == nil {
+		t.Errorf("Missing apiKey should've return error, %s", err)
 	}
 }
 
@@ -164,13 +142,11 @@ func TestOpenForecastMissingApiKey(t *testing.T) {
 		Units: api.UnitsMetric,
 	}
 
-	c, err := api.NewClientWithTestUrl(URL_testOpenWeather)
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClientWithTestUrl(URL_testOpenWeather)
 
-	if _, err = c.OpenForecast(r); err == nil {
-		t.Errorf("Missing ApiKey should've return error, %s", err)
+
+	if _, err := c.OpenForecast(r); err == nil {
+		t.Errorf("Missing apiKey should've return error, %s", err)
 	}
 }
 
@@ -186,7 +162,7 @@ func TestOpenWeatherRequestURL(t *testing.T) {
 	server := testServerForQuery(expectedQuery, 200, `{"status":"OK"}"`)
 	defer server.Close()
 
-	c, _ := api.NewClientWithTestUrl(server.URL)
+	c := api.NewClientWithTestUrl(server.URL)
 
 	_, err := c.OpenWeather(r)
 	if err != nil {

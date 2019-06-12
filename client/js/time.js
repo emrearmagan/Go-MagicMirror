@@ -1,9 +1,9 @@
 function getTime(){
     let time = new Date()
 
-    var hours = time.getHours();
-    var minutes = time.getMinutes();
-    var seconds = time.getSeconds();
+    let hours = time.getHours();
+    let minutes = time.getMinutes();
+    let seconds = time.getSeconds();
 
     hours = checkForLength(hours);
     minutes = checkForLength(minutes);
@@ -19,15 +19,15 @@ function getDate() {
     const week = new Array('Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag');
     const months = new Array('Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 
-    var date = new Date();
-    var currentDay = week[date.getDay()];
-    var month = months[date.getMonth()]
+    let date = new Date();
+    let currentDay = week[date.getDay()];
+    let month = months[date.getMonth()]
 
-    var day = date.getDate();
-    var year = date.getFullYear();
+    let day = date.getDate();
+    let year = date.getFullYear();
 
     let todaysDate = currentDay + ", " + day + ". " + month + " " + year;
-    document.getElementById("date").innerHTML = todaysDate;
+    document.getElementById("todaysDate").innerHTML = todaysDate;
 }
 
 function checkForLength(x) {

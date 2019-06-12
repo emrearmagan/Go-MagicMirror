@@ -2,31 +2,18 @@
     <p>Kalender</p>
     <hr>
     <div class="calender">
-        {{/*        <div class="loading">*/}}
-        {{/*            <div class="obj"></div>*/}}
-        {{/*            <div class="obj"></div>*/}}
-        {{/*            <div class="obj"></div>*/}}
-        {{/*            <div class="obj"></div>*/}}
-        {{/*            <div class="obj"></div>*/}}
-        {{/*            <div class="obj"></div>*/}}
-        {{/*            <div class="obj"></div>*/}}
-        {{/*            <div class="obj"></div>*/}}
-        {{/*        </div>*/}}
-        {{if .}}
-            {{range .}}
-                <ul class="event">
-                    <li class="c icon"><img src="/client/img/icons/calender_icon.png"></li>
-                    <li class="c event">{{.Event}}</li>
-                    <li class="c date">{{.Date}}</li>
-                </ul>
-            {{end}}
+        <div class="loading">
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+            <div class="obj"></div>
+        </div>
 
-        {{else}}
-            <div class="no events">
-                Keine Einträge im Kalender
-            </div>
-        {{end}}
-
+        <div class="no events"></div>
         <div class="c error"></div>
     </div>
 {{end}}

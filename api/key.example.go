@@ -1,9 +1,9 @@
 package api
 
 var (
-	ApiKeyOpenWeather    = ApiKey("YOUR_APIKEY")
-	ApikeyDistanceMatrix= ApiKey("YOUR_APIKEY")
-	ApiKeyTankerkoenig    = ApiKey("YOUR_APIKEY")
-	ApiKeyHvv             = ApiKey("YOUR_APIKEY")
-	ApiKeyHvvUSER         = "YOUR_USERNAME"
+	ApiKeyOpenWeather    = apiKey("YOUR_APIKEY")
+	ApikeyDistanceMatrix = apiKey("YOUR_APIKEY")
+	ApiKeyTankerkoenig   = apiKey("YOUR_APIKEY")
+	ApiKeyHvv            = apiKey("YOUR_APIKEY")
+	ApiKeyHvvUSER        = "YOUR_USERNAME"
 )

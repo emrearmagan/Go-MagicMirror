@@ -27,10 +27,7 @@ func TestTankerkoenig(t *testing.T) {
 		ApiKey: apiKey_testTanker,
 	}
 
-	c, err := api.NewClient()
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClient()
 
 	res, err := c.Tankerkoenig(tk)
 	if err != nil {
@@ -49,12 +46,9 @@ func TestTankerkoenigMissingLon(t *testing.T) {
 		ApiKey: apiKey_testTanker,
 	}
 
-	c, err := api.NewClient()
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClient()
 
-	if _, err = c.Tankerkoenig(tk); err == nil {
+	if _, err := c.Tankerkoenig(tk); err == nil {
 		t.Errorf("Missing Lon should've return error, %s", err)
 	}
 }
@@ -68,12 +62,10 @@ func TestTankerkoenigMissingLat(t *testing.T) {
 		ApiKey: apiKey_testTanker,
 	}
 
-	c, err := api.NewClient()
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClient()
 
-	if _, err = c.Tankerkoenig(tk); err == nil {
+
+	if _, err := c.Tankerkoenig(tk); err == nil {
 		t.Errorf("Missing Lat should've return error, %s", err)
 	}
 }
@@ -87,12 +79,9 @@ func TestTankerkoenigMissingRadius(t *testing.T) {
 		ApiKey: apiKey_testTanker,
 	}
 
-	c, err := api.NewClient()
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClient()
 
-	if _, err = c.Tankerkoenig(tk); err == nil {
+	if _, err := c.Tankerkoenig(tk); err == nil {
 		t.Errorf("Missing Radius should've return error, %s", err)
 	}
 }
@@ -106,12 +95,9 @@ func TestTankerkoenigMissingGasTyp(t *testing.T) {
 		ApiKey: apiKey_testTanker,
 	}
 
-	c, err := api.NewClient()
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClient()
 
-	if _, err = c.Tankerkoenig(tk); err == nil {
+	if _, err := c.Tankerkoenig(tk); err == nil {
 		t.Errorf("Missing GasTyp should've return error, %s", err)
 	}
 }
@@ -126,12 +112,10 @@ func TestTankerkoenigMissingSortby(t *testing.T) {
 		ApiKey: apiKey_testTanker,
 	}
 
-	c, err := api.NewClient()
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClient()
 
-	if _, err = c.Tankerkoenig(tk); err == nil {
+
+	if _, err := c.Tankerkoenig(tk); err == nil {
 		t.Errorf("Missing Sortby should've return error, %s", err)
 	}
 }
@@ -145,13 +129,11 @@ func TestTankerkoenigMissingApiKey(t *testing.T) {
 		GasTyp: gastyp_testTanker,
 	}
 
-	c, err := api.NewClient()
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClient()
 
-	if _, err = c.Tankerkoenig(tk); err == nil {
-		t.Errorf("Missing ApiKey should've return error, %s", err)
+
+	if _, err := c.Tankerkoenig(tk); err == nil {
+		t.Errorf("Missing apiKey should've return error, %s", err)
 	}
 }
 
@@ -169,7 +151,7 @@ func TestTankerkoenigRequestURL(t *testing.T) {
 	server := testServerForQuery(expectedQuery, 200, `{"status":"OK"}"`)
 	defer server.Close()
 
-	c, _ := api.NewClientWithTestUrl(server.URL)
+	c := api.NewClientWithTestUrl(server.URL)
 
 	_, err := c.Tankerkoenig(tk)
 	if err != nil {

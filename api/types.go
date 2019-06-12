@@ -13,9 +13,7 @@ const (
 	TravelModeWalking   = Mode("walking")
 	TravelModeBicycling = Mode("bicycling")
 	TravelModeTransit   = Mode("transit")
-)
 
-const (
 	AvoidTolls    = "tolls"
 	AvoidHighways = "highways"
 	AvoidFerries  = "ferries"
@@ -45,17 +43,13 @@ const (
 const (
 	UnitsMetric   = Units("metric")
 	UnitsImperial = Units("imperial")
-)
 
-const (
 	GERMAN  = Language("de")
 	ENGLISH = Language("en")
 	SPANISH = Language("sp")
-)
 
-const (
-	Latitude  = Coords("53.48114369667324")
-	Longitude = Coords("9.872239785725588")
+	Latitude  = Coords("53.460210")
+	Longitude = Coords("9.951299")
 )
 
 //--------------------------------------------Tankerkoenig Api----------------------------------------------------------
@@ -69,56 +63,14 @@ const (
 	SortbyPrice    = "price"
 )
 
-type ApiConfig struct {
+type apiConfig struct {
 	host string
 	path string
 }
 
+type apiKey string
+
 //---------------------------------------------------------------------------------------------------------------------
-
-// commonResponse contains the common response fields to most API. This is used for all responses
-//type CommonResponse struct {
-//	//Status Tankerkoenig
-//	Status Status `json:"status,omitempty"`
-//	//Status Openweather
-//	Status1 Status `json:"cod,omitempty"` //
-
-//	// ErrorMessage is the explanatory field added when Status is an error.
-//	//ErrorMessage for Tankerkoening and Openweather
-//	ErrorMessage ErrorMessage `json:"message,omitempty"`
-
-//	//ErrorMessage1 for Google DistanceMatrix
-//	ErrorMessage1 ErrorMessage `json:"error_message,omitempty"`
-//}
 
 type Status interface{}
 type ErrorMessage interface{}
-
-// Since Status and Errormessage are called differently on most API calls, we sort them out here
-//func (c *CommonResponse) StatusCheck() {
-//	if c.Status == nil {
-//		c.Status = c.Status1
-//	}
-//	if c.ErrorMessage == nil {
-//		c.ErrorMessage = c.ErrorMessage1
-//	}
-//}
-// defines an interface for all API Requests
-// StatusError returns an error if this object has a Status different
-//func (c *CommonResponse) StatusError() error {
-//	switch status := c.Status.(type) {
-//	case int:
-//		if status != 200 {
-//			return fmt.Errorf("maps: %s - %s", c.Status, c.ErrorMessage)
-//		}
-//	case float64:
-//		if status != 200 {
-//			return fmt.Errorf("maps: %s - %s", c.Status, c.ErrorMessage)
-//		}
-//	case string:
-//		if status != "OK" && c.Status != "ok" && status != "ZERO_RESULTS" && c.Status != "200" {
-//			return fmt.Errorf("maps: %s - %s", c.Status, c.ErrorMessage)
-//		}
-//	}
-//	return nil
-//}

@@ -7,7 +7,7 @@ import (
 )
 
 func TestNumbers(t *testing.T) {
-	c, _ := api.NewClient()
+	c := api.NewClient()
 	resp, err := c.Numbers()
 	if err != nil {
 		t.Errorf("returned non nill error: %s", err.Error())

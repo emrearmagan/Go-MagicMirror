@@ -61,23 +61,6 @@ func APICall(k string) ([]Traffic, error) {
 		log.Fatal(err)
 	}
 
-	//log.Printf("overview: %s", res)
-
-	/*
-	//writing result in a text file, only for maint purposes
-
-	emptyFile, err := os.Create("empty.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	//log.Println(emptyFile)
-	defer emptyFile.Close()
-
-	err = ioutil.WriteFile("empty.txt", []byte(res), 0755)
-	if err != nil {
-		fmt.Printf("Unable to write file: %v", err)
-	}
-*/
 	r := transform(res)
 
 	return r, nil
@@ -190,7 +173,7 @@ func formatString(s []string) ([]string, error) {
 }
 
 //replaces the given words of a string
-func replaceString(s string, with string, i int, element ... string) string {
+func replaceString(s string, with string, i int, element ...string) string {
 	for _, v := range element {
 		s = strings.Replace(s, v, with, i)
 	}

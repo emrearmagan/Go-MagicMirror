@@ -14,7 +14,7 @@
     overflow: auto;
 }
 
-#date {
+#todaysDate {
     font-size: 2em;
     color: var(--grey)
 }

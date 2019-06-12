@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var tankerkoenigApi = &ApiConfig{
+var tankerkoenigApi = &apiConfig{
 	host: "https://creativecommons.tankerkoenig.de",
 	path: "/json/list.php",
 }
@@ -72,7 +72,7 @@ func checkTankerkoenigParams(r *TankerkoenigRequest) error {
 		return errors.New("no Sortby selected")
 	}
 	if len(r.ApiKey) == 0 {
-		return errors.New("no ApiKey selected")
+		return errors.New("no apiKey selected")
 	}
 	return nil
 }
@@ -113,9 +113,9 @@ type TankerkoenigRequest struct {
 	// Valid values are 'GasTypAll', 'GasTypE10', 'GasTypE5' and 'GasTypDiesel'
 	// Required
 	GasTyp GasTyp
-	// ApiKey for Tankerkoenig API.
+	// apiKey for Tankerkoenig API.
 	// Required
-	ApiKey ApiKey
+	ApiKey apiKey
 }
 
 // Expected Response from Tankerkoenig API

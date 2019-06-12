@@ -17,7 +17,7 @@ import (
 	"time"
 )
 
-var calenderAPI = &ApiConfig{
+var calenderAPI = &apiConfig{
 	host: "https://www.googleapis.csom/",
 	path: "calendar/v3/calendars/primary/events",
 }
@@ -212,9 +212,9 @@ type GoogleCalenderResponse struct {
 			Date     string `json:"date"`
 			DateTime string `json:"dateTime,omitempty"`
 		} `json:"start,omitempty"`
-		End struct {
-			Date string `json:"date"`
-		} `json:"end,omitempty"`
+		//End struct {
+		//	Date string `json:"date"`
+		//} `json:"end,omitempty"`
 		Summary string `json:"summary"`
 	} `json:"items"`
 }

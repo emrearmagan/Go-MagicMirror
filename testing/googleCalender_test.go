@@ -7,10 +7,7 @@ import (
 )
 
 func TestCalender(t *testing.T) {
-	c, err := api.NewClient()
-	if err != nil {
-		t.Error(err)
-	}
+	c := api.NewClient()
 
 	var request api.GoogleCalenderRequest
 

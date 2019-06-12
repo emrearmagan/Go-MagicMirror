@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-var NumbersApi = &ApiConfig{
+var NumbersApi = &apiConfig{
 	"http://numbersapi.com/",
 	"",
 }

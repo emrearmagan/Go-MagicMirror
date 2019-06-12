@@ -4,16 +4,25 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 	"net/url"
 )
 
 type Client struct {
 	httpClient        *http.Client
-	name              string
+	Apikey            Key
 	requestsPerSecond int
+	testUrl           string
+}
 
-	TestUrl string
+type Key struct {
+	DistanceMatrixKey  string
+	GoogleClientID     string
+	GoogleClientSecret string
+	OpenWeatherKey     string
+	TankerkoenigKey    string
+	HvvKey             string
 }
 
 // @Todo implement these two
@@ -22,30 +31,30 @@ var defaultRequestsPerSecond = 50
 
 //@Todo add optional aruguments like below
 // func NewClient(optional... Optional) (*Client, error)
-func NewClient() (*Client, error) {
+func NewClient() *Client {
 	c := &Client{requestsPerSecond: defaultRequestsPerSecond}
-	return c, nil
+	return c
 }
 
-func NewClientWithTestUrl(TestUrl string) (*Client, error) {
-	c := &Client{requestsPerSecond: defaultRequestsPerSecond}
-	c.TestUrl = TestUrl
-	return c, nil
+func NewClientWithTestUrl(testUrl string) *Client {
+	c := &Client{}
+	c.testUrl = testUrl
+	return c
 }
 
 // Make a http GET Request to the Server
-func (c *Client) get(config *ApiConfig, apiReq apiRequest, resp interface{}) error {
+func (c *Client) get(config *apiConfig, apiReq apiRequest, resp interface{}) error {
 	host := config.host
 	//Only for testing purposes
-	if c.TestUrl != "" {
-		host = c.TestUrl
+	if c.testUrl != "" {
+		host = c.testUrl
 	}
 
 	req, err := http.NewRequest(http.MethodGet, host+config.path, nil)
 	if err != nil {
 		return errors.New("failed to make a request to" + host + config.path)
 	}
-	if err := c.do(config, apiReq, req, resp); err != nil {
+	if err := c.do(apiReq, req, resp); err != nil {
 		return err
 	}
 
@@ -53,11 +62,11 @@ func (c *Client) get(config *ApiConfig, apiReq apiRequest, resp interface{}) err
 }
 
 // Make a http POST Request to the Server
-func (c *Client) post(config *ApiConfig, apiReq apiRequest, resp interface{}, reqBody []byte, header map[string]string) error {
+func (c *Client) post(config *apiConfig, apiReq apiRequest, resp interface{}, reqBody []byte, header map[string]string) error {
 	host := config.host
 	//Only for testing purposes
-	if c.TestUrl != "" {
-		host = c.TestUrl
+	if c.testUrl != "" {
+		host = c.testUrl
 	}
 
 	req, err := http.NewRequest(http.MethodPost, host+config.path, bytes.NewBuffer(reqBody))
@@ -70,14 +79,14 @@ func (c *Client) post(config *ApiConfig, apiReq apiRequest, resp interface{}, re
 		req.Header.Set(i, v)
 	}
 
-	if err := c.do(config, apiReq, req, resp); err != nil {
+	if err := c.do(apiReq, req, resp); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (c *Client) do(config *ApiConfig, apiReq apiRequest, req *http.Request, resp interface{}) error {
+func (c *Client) do(apiReq apiRequest, req *http.Request, resp interface{}) error {
 	if apiReq != nil {
 		urls := c.generateUrls(apiReq.params())
 		req.URL.RawQuery = urls
@@ -90,11 +99,12 @@ func (c *Client) do(config *ApiConfig, apiReq apiRequest, req *http.Request, res
 
 	httpResp, err := client.Do(req)
 	if err != nil {
-		return errors.New("client failed to do request")
+		return fmt.Errorf("client failed to do request %v", err)
 	}
 	defer httpResp.Body.Close()
 
-	return json.NewDecoder(httpResp.Body).Decode(resp)
+	return json.NewDecoder(httpResp.Body).Decode(&resp)
+
 }
 
 // Generates Urls for given Request

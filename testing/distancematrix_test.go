@@ -3,7 +3,6 @@ package testing
 import (
 	"Go-MagicMirror/api"
 	"fmt"
-	"log"
 	"reflect"
 	"testing"
 )
@@ -40,10 +39,7 @@ func TestDistanceMatrixHamburgToBerlin(t *testing.T) {
 	server := testServer(200, response)
 	defer server.Close()
 
-	c, err := api.NewClientWithTestUrl(server.URL)
-	if err != nil {
-		log.Fatal(err)
-	}
+	c := api.NewClientWithTestUrl(server.URL)
 
 	r := &api.DistanceMatrixRequest{
 		Origins:      "Hamburg, Germany",
@@ -111,10 +107,7 @@ func TestDistanceMatrixWithCoords(t *testing.T) {
 	server := testServer(200, response)
 	defer server.Close()
 
-	c, err := api.NewClientWithTestUrl(server.URL)
-	if err != nil {
-		log.Fatal(err)
-	}
+	c := api.NewClientWithTestUrl(server.URL)
 
 	r := &api.DistanceMatrixRequest{
 		Origins:      "9.993682,53.551085",
@@ -154,7 +147,7 @@ func TestDistanceMatrixMissingOrigins(t *testing.T) {
 	server := testServer(200, "")
 	defer server.Close()
 
-	c, _ := api.NewClientWithTestUrl(server.URL)
+	c := api.NewClientWithTestUrl(server.URL)
 	r := &api.DistanceMatrixRequest{
 		Origins:      "",
 		Destinations: []string{"53.566569,9.98464"},
@@ -171,7 +164,7 @@ func TestDistanceMatrixMissingDestinations(t *testing.T) {
 	server := testServer(200, "")
 	defer server.Close()
 
-	c, _ := api.NewClientWithTestUrl(server.URL)
+	c := api.NewClientWithTestUrl(server.URL)
 	r := &api.DistanceMatrixRequest{
 		Origins:      "53.561933, 9.953944",
 		Destinations: []string{},
@@ -185,7 +178,7 @@ func TestDistanceMatrixMissingDestinations(t *testing.T) {
 }
 
 func TestDistanceMatrixMissingApiKey(t *testing.T) {
-	c, _ := api.NewClient()
+	c := api.NewClient()
 	r := &api.DistanceMatrixRequest{
 		Origins:      "53.561933, 9.953944",
 		Destinations: []string{"53.566569,9.98464"},
@@ -193,7 +186,7 @@ func TestDistanceMatrixMissingApiKey(t *testing.T) {
 	}
 
 	if _, err := c.DistanceMatrix(r); err == nil {
-		t.Errorf("Missing ApiKey should've return error")
+		t.Errorf("Missing apiKey should've return error")
 	}
 }
 
@@ -202,7 +195,7 @@ func TestDistanceMatrixTransitRequestURL(t *testing.T) {
 	server := testServerForQuery(expectedQuery, 200, `{"status":"OK"}"`)
 	defer server.Close()
 
-	c, _ := api.NewClientWithTestUrl(server.URL)
+	c := api.NewClientWithTestUrl(server.URL)
 
 	r := &api.DistanceMatrixRequest{
 		Origins:      "Hamburg, Germany",
